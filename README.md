@@ -56,17 +56,16 @@ and aesthetic changes were made, as the system structure proved quite modular, a
 An example of this is that the planet speed was added late into the project, but was simple since the foundation was in place.
 
 **Justin:**
-My primary focus was on project resiliency, API stability, and overhauling the frontend into a highly interactive, responsive "Sci-Fi HUD" dashboard. 
+My focus was on system architecture, API reliability, and transforming the frontend into a highly interactive, responsive "Sci-Fi HUD" dashboard. I wanted to ensure the project was not only visually engaging but also technically robust enough to survive network issues during a live presentation.
 
-While the base API call was functional, public CORS proxies are notorious for rate-limiting local IP addresses or going offline unexpectedly. To fix this, I refactored the fetch logic to stagger the API calls, preventing our app from being blocked for spamming requests. More importantly, I engineered a "Simulated Data Fail-Safe." If the NASA API or the proxy fails during a live presentation (due to school Wi-Fi blocks or server downtime), the site automatically detects the error and injects realistic fallback data so the UI remains flawless and doesn't crash.
-
-On the frontend, I completely redesigned the aesthetic to match a premium dashboard. This included fixing the mobile responsiveness with CSS media queries so the app scales perfectly on smaller screens. I also implemented several interactive features:
-* A cinematic terminal boot sequence overlay.
-* Neon tachometers that visually scale to display live orbital speeds.
-* An Auto-Orbit animation toggle and Keyboard Arrow scrubbing controls for the demo canvas.
-* A "HUD Focus" effect that blurs inactive planets when hovering over a specific card.
-* Custom holographic targeting cursors, CRT scanlines, a glowing scrollbar, and an emoji favicon injection to clear out lingering console errors. 
-
+**Technical Contributions:**
+* **API Queueing & Resiliency:** Refactored the NASA Horizon fetch logic to stagger API requests. This prevents CORS proxy rate-limiting and reduces the initial network payload.
+* **Simulated Data Fail-Safe:** Engineered a local state machine with fallback telemetry data. If the school Wi-Fi or external proxy drops, the site seamlessly injects this local data to prevent UI crashes and ensure 100% uptime.
+* **Cinematic UI/UX:** Completely redesigned the aesthetic using CSS media queries for full mobile responsiveness. Added custom styling including global CRT scanlines, holographic SVG targeting cursors, and glowing webkit scrollbars.
+* **Advanced DOM Interactivity:** * Programmed an asynchronous terminal boot sequence using JS Promises.
+  * Built dynamic neon tachometers that visually scale based on live planetary velocities.
+  * Engineered a state-driven "Auto-Orbit" toggle and mapped Left/Right Arrow keys for manual phase scrubbing.
+  * Created a "HUD Focus" hover effect that dynamically blurs inactive planetary cards.
 **Nick:**
 Fork to add about page (3/31)
 
