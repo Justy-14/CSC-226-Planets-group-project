@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Seeker</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+    <link rel="stylesheet" href="planets.css">
+</head>
+<body>
+
+    <div id="boot-screen">
+      <div class="terminal-text" id="terminal-output"></div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#demo">Interactive Demo</a>
+      <a href="#planets">Planets</a>
+      <a href="#facts">Facts</a>
+    </nav>
+
+    <section id="home">
+      <div class="main-title-card">
+        <h1>Planet Seeker</h1>
+      </div>
+      <p class="section-description">
+        Welcome to Planet Seeker! View the phases of each planet in our solar system as they appear from Earth in real-time.
+      </p>
+      <div class="section-description" style="font-style: italic; color: #c0c0c0; margin-bottom: 3rem;">
+        <strong>Phase Angle:</strong> The angle between the Sun, observed object, and observer (Earth). It determines the illuminated portion of a celestial body's surface.
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="demo-container">
+        <div id="phase-presets" style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;align-items:flex-end"></div> 
+
+        <div style="text-align: center;">
+          <p class="demo-title">Interactive Demo</p>
+          <canvas id="phase-demo" width="160" height="160"></canvas>
+          <p style="font-size: 14px; color: #a78bfa; margin-top: 1rem; letter-spacing: 0.5px;">Use Left/Right Arrow Keys to scrub</p>
+        </div>
+
+        <div class="control-buttons">
+          <button onclick="currentSide='left'; phDraw(currentAngle)">← Left Side Lit</button>
+          <button onclick="toggleAutoOrbit()" id="orbit-btn">▶ Auto-Orbit</button>
+          <button onclick="currentSide='Right'; phDraw(currentAngle)">Right Side Lit →</button> 
+        </div>
+
+        <input type="range" min="0" max="180" value="90" oninput="currentAngle=+this.value; phDraw(currentAngle)" class="range-slider" id="demo-slider">
+        <p id="phase-readout" class="readout"></p>
+      </div>
+    </section>
+
+    <section id="planets">
+      <div class="section-title-card">
+        <p>Live Planetary Telemetry</p>
+      </div>
+      
+      <div class="planet-grid">
+        <div class="planet-card">
+          <canvas id="Moon" width="160" height="160"></canvas>
+          <p class="section-title">The Moon</p>
+          <p id="Moon-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Mercury" width="160" height="160"></canvas>
+          <p class="section-title">Mercury</p>
+          <p id="Mercury-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Venus" width="160" height="160"></canvas>
+          <p class="section-title">Venus</p>
+          <p id="Venus-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Mars" width="160" height="160"></canvas>
+          <p class="section-title">Mars</p>
+          <p id="Mars-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Jupiter" width="160" height="160"></canvas>
+          <p class="section-title">Jupiter</p>
+          <p id="Jupiter-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Saturn" width="160" height="160"></canvas>
+          <p class="section-title">Saturn</p>
+          <p id="Saturn-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Uranus" width="160" height="160"></canvas>
+          <p class="section-title">Uranus</p>
+          <p id="Uranus-readout" class="readout">Loading telemetry...</p>
+        </div>
+
+        <div class="planet-card">
+          <canvas id="Neptune" width="160" height="160"></canvas>
+          <p class="section-title">Neptune</p>
+          <p id="Neptune-readout" class="readout">Loading telemetry...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="facts">
+      <div class="section-title-card">
+        <p>System Archives</p>
+      </div>
+      <div style="max-width: 900px; margin: 3rem auto; display: flex; flex-direction: column; gap: 2rem;">
+        <div class="fact-card">
+          <h3 class="fact-title">Mercury & Venus</h3>
+          <p class="fact-text">These inner planets show dramatic phase changes throughout the year, similar to the Moon. Mercury can appear as a thin crescent or nearly full, while Venus becomes visibly gibbous even to the naked eye.</p>
+        </div>
+
+        <div class="fact-card">
+          <h3 class="fact-title">Outer Planets</h3>
+          <p class="fact-text">The outer planets (Mars, Jupiter, Saturn, Uranus, Neptune) show minimal phase variations because they orbit beyond Earth. We see nearly the entire illuminated side year-round, with phase angles rarely exceeding a few degrees.</p>
+        </div>
+
+        <div class="fact-card">
+          <h3 class="fact-title">The Artemis II Earthrise</h3>
+          <p class="fact-text">During the historic Artemis II mission, four astronauts became the first humans to fly around the Moon in over 50 years. As their Orion spacecraft looped behind the lunar far side, they witnessed a breathtaking "Earthrise"—seeing our planet rise over the cratered horizon as a partially illuminated phase.</p>
+        </div>
+
+        <div class="fact-card">
+          <h3 class="fact-title">Galileo & The Phases of Venus</h3>
+          <p class="fact-text">When Galileo Galilei first pointed his telescope at Venus in 1610, he noticed it went through a full set of phases just like our Moon. This groundbreaking discovery proved that Venus orbits the Sun, not the Earth, delivering the final blow to the idea that Earth was the center of the universe.</p>
+        </div>
+
+        <div class="fact-card">
+          <h3 class="fact-title">The "Da Vinci Glow"</h3>
+          <p class="fact-text">Have you ever looked at a thin crescent Moon and noticed that the rest of the dark circle is faintly glowing? This phenomenon, called Earthshine or the "Da Vinci glow," is caused by sunlight reflecting off Earth's highly reflective oceans and clouds, bouncing onto the Moon, and reflecting back to our eyes.</p>
+        </div>
+      </div>
+    </section>
+
+ <script src="planets.js"></script>
+</body>
+</html>

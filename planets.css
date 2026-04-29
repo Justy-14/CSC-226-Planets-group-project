@@ -1,0 +1,141 @@
+/* ===================== BASE SYSTEM & CUSTOM SCROLLBAR ===================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('space.jpg');
+  background-color: #050508;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+  font-family: sans-serif;
+  /* Holographic Targeting Cursor */
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%234fd0e7" stroke-width="2" stroke-dasharray="4 4"/><circle cx="16" cy="16" r="2" fill="%23a78bfa"/></svg>') 16 16, crosshair;
+}
+
+a, button, input[type="range"], .planet-card {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23a78bfa" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="%234fd0e7"/></svg>') 16 16, pointer !important;
+}
+
+/* Custom Sci-Fi Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #0a051e; border-left: 1px solid rgba(167, 139, 250, 0.1); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #4fd0e7, #a78bfa); border-radius: 10px; border: 3px solid #0a051e; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #a78bfa, #4fd0e7); }
+
+/* CRT Scanline Overlay */
+html::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 99998;
+  pointer-events: none;
+}
+
+/* ===================== BOOT SEQUENCE ===================== */
+#boot-screen {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #050508;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 1s ease-in-out;
+}
+.terminal-text {
+  font-family: 'Courier New', Courier, monospace;
+  color: #4fd0e7;
+  font-size: 18px;
+  line-height: 2;
+  text-shadow: 0 0 8px rgba(79, 208, 231, 0.6);
+  white-space: pre-wrap;
+}
+.terminal-text::after {
+  content: '█';
+  animation: blink 1s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ===================== LAYOUT & HUD COMPONENTS ===================== */
+nav {
+  position: fixed; top: 0; width: 100%; display: flex; gap: 2rem;
+  padding: 1rem 2rem; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); z-index: 999;
+}
+nav a { color: white; text-decoration: none; font-size: 1.1rem; }
+nav a:hover { color: #a78bfa; }
+
+/* Planet Grid & HUD Focus Effect */
+.planet-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.planet-grid:hover .planet-card:not(:hover) {
+  filter: blur(4px) opacity(0.5);
+  transform: scale(0.95);
+}
+.planet-card {
+  transition: all 0.4s ease;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.planet-card:hover {
+  transform: scale(1.05);
+  background: rgba(167, 139, 250, 0.1);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.2);
+}
+
+canvas {
+  display: block; margin: 1rem auto; background: rgba(0, 0, 0, 0.8); border-radius: 100%;
+}
+
+/* Tachometer Neon Bar */
+.tach-container {
+  width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin: 8px auto; overflow: hidden;
+}
+.tach-bar {
+  height: 100%; background: linear-gradient(90deg, #4fd0e7, #a78bfa);
+  box-shadow: 0 0 10px #4fd0e7; width: 0%; transition: width 1s ease-out;
+}
+
+.readout {
+  font-family: 'Courier New', monospace; font-size: 14px; color: #a78bfa; text-align: center;
+  background: rgba(10, 5, 30, 0.7); padding: 1rem; border-radius: 12px; border: 1px solid rgba(167, 139, 250, 0.2);
+  min-width: 250px; line-height: 1.6;
+}
+
+.main-title-card { text-align: center; margin: 4rem auto 1.5rem auto; padding: 3rem 2rem; }
+.main-title-card h1 { font-size: 100px; color: white; text-shadow: 0 0 20px rgba(167, 139, 250, 0.6); margin: 0; }
+.section-title { font-size: 24px; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; text-shadow: 0 0 10px rgba(167, 139, 250, 0.2); }
+.section-description { font-size: 16px; color: #e0e0e0; text-align: center; max-width: 800px; margin: 0 auto 2rem auto; line-height: 1.8; }
+.section-title-card p { font-size: 28px; font-weight: 700; color: #ffffff; text-align: center; margin: 3rem 0; text-transform: uppercase; }
+
+/* Controls */
+.demo-container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.control-buttons button { color: #fff; background: rgba(167, 139, 250, 0.1); border: 1px solid #a78bfa; padding: 8px 16px; border-radius: 4px; transition: 0.2s; }
+.control-buttons button:hover { background: rgba(167, 139, 250, 0.3); }
+.range-slider { width: 220px; accent-color: #a78bfa; }
+
+.fact-card {
+  background: rgba(167, 139, 250, 0.05); border: 1px solid rgba(167, 139, 250, 0.2); border-radius: 12px; padding: 2rem; backdrop-filter: blur(6px);
+}
+.fact-title { color: #a78bfa; margin-bottom: 0.5rem; }
+.fact-text { color: #d0d0d0; line-height: 1.7; }
+
+/* ===================== MOBILE RESPONSIVENESS ===================== */
+@media (max-width: 768px) {
+  .main-title-card h1 { font-size: 3rem; }
+  .control-buttons { flex-direction: column; }
+  .planet-grid { padding: 0 1rem; }
+}
