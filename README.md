@@ -1,9 +1,3 @@
-Fork to add about page (Nick Barton 3/31)
-
-
-
-
-
 --== PLANET SEEKER ==--        
 
 Created by:
@@ -15,9 +9,11 @@ A website created to track information about the planets in our solar system.
 Uses real time NASA data from the Horizon API to display information about each planet.
 Draws phase angles for each planet as viewed from Earth, similar to Lunar phases
 
-Challenges and thought process during creation:
+---
 
-Angelo:
+### Challenges and thought process during creation:
+
+**Angelo:**
 When embarking on this project, I had very little experience writing in javascript,
 let alone how to use an API.
 
@@ -59,5 +55,20 @@ to the draw function. This was the last major technical hurdle, and after this o
 and aesthetic changes were made, as the system structure proved quite modular, allowing easy expansion when needed.
 An example of this is that the planet speed was added late into the project, but was simple since the foundation was in place.
 
-More features may be added in the future as needed.
+**Justin:**
+My primary focus was on project resiliency, API stability, and overhauling the frontend into a highly interactive, responsive "Sci-Fi HUD" dashboard. 
 
+While the base API call was functional, public CORS proxies are notorious for rate-limiting local IP addresses or going offline unexpectedly. To fix this, I refactored the fetch logic to stagger the API calls, preventing our app from being blocked for spamming requests. More importantly, I engineered a "Simulated Data Fail-Safe." If the NASA API or the proxy fails during a live presentation (due to school Wi-Fi blocks or server downtime), the site automatically detects the error and injects realistic fallback data so the UI remains flawless and doesn't crash.
+
+On the frontend, I completely redesigned the aesthetic to match a premium dashboard. This included fixing the mobile responsiveness with CSS media queries so the app scales perfectly on smaller screens. I also implemented several interactive features:
+* A cinematic terminal boot sequence overlay.
+* Neon tachometers that visually scale to display live orbital speeds.
+* An Auto-Orbit animation toggle and Keyboard Arrow scrubbing controls for the demo canvas.
+* A "HUD Focus" effect that blurs inactive planets when hovering over a specific card.
+* Custom holographic targeting cursors, CRT scanlines, a glowing scrollbar, and an emoji favicon injection to clear out lingering console errors. 
+
+**Nick:**
+Fork to add about page (3/31)
+
+---
+More features may be added in the future as needed.
