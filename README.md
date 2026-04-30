@@ -66,6 +66,8 @@ My focus was on system architecture, API reliability, and transforming the front
   * Built dynamic neon tachometers that visually scale based on live planetary velocities.
   * Engineered a state-driven "Auto-Orbit" toggle and mapped Left/Right Arrow keys for manual phase scrubbing.
   * Created a "HUD Focus" hover effect that dynamically blurs inactive planetary cards.
+ 
+ 
 **Nicholas:**
 My focus was on the user-layer and presentation side of the website, which allowed me to contribute heavily to the project’s overall visual identity while continuing to develop my frontend programming skills. One of my most notable developments was creating a working glow-effect system across various site elements, which significantly enhanced the futuristic atmosphere and visual depth of the interface. Although the effect required extensive experimentation and revision, the process gave me valuable experience with advanced CSS styling, layering, visual rendering, and how CSS dynamically integrates with HTML elements to create responsive visual behavior.
 
