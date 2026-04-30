@@ -18,6 +18,9 @@
       <a href="#demo">Interactive Demo</a>
       <a href="#planets">Planets</a>
       <a href="#facts">Facts</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#credits">Credits</a>
     </nav>
 
     <section id="home">
@@ -140,6 +143,92 @@
         </div>
       </div>
     </section>
+
+  <section id="about">
+  <div class="section-title-card">
+    <p>About</p>
+  </div>
+
+  <div class="about-block">
+    <h3 class="about-heading">The Project</h3>
+    <p class="about-paragraph">
+      Planet Seeker is an interactive astronomy tool that visualizes the real-time phases of every planet in our solar system as seen from Earth. By querying NASA JPL's Horizons API, the site retrieves live phase angles and solar elongation data for each body, then renders an accurate illumination portrait using HTML5 Canvas.
+    </p>
+  </div>
+
+  <div class="about-block">
+    <h3 class="about-heading">How It Works</h3>
+    <div class="about-tech-grid">
+      <div class="tech-card"><span class="tech-icon">🖥️</span><h4>HTML5 Canvas</h4><p>Each planet is drawn by layering a dark circle, a lit semicircle, and a terminator ellipse whose width is controlled by the phase angle.</p></div>
+      <div class="tech-card"><span class="tech-icon">🛰️</span><h4>NASA JPL Horizons API</h4><p>Live ephemeris data fetched on page load — phase angle, solar elongation, and orbital speed per body.</p></div>
+      <div class="tech-card"><span class="tech-icon">🌐</span><h4>CORS Proxy</h4><p>corsproxy.io relays API calls to NASA's servers to get around browser cross-origin restrictions.</p></div>
+    </div>
+  </div>
+
+  <div class="about-block">
+    <h3 class="about-heading">The Team</h3>
+    <div class="about-team-grid">
+      <div class="team-card"><div class="team-avatar">AR</div><h4>Angelo Ragucci</h4><span class="team-role">Project Lead · JavaScript</span><p>Conceived the project and built the core JS — phase-angle engine, NASA API integration, CORS proxy, and animation system.</p></div>
+      <div class="team-card"><div class="team-avatar">JR</div><h4>Justin Robles</h4><span class="team-role">UI/UX · Architecture</span><p>Redesigned the frontend into a Sci-Fi HUD dashboard. Built the boot sequence, tachometers, fail-safe data system, and mobile responsiveness.</p></div>
+      <div class="team-card"><div class="team-avatar">NB</div><h4>Nicholas Barton</h4><span class="team-role">Site Integration · Visual Design</span><p>Created the About, History, and Credit pages and integrated them into each build's updates, allowing for a streamlined design with changing visuals.</p></div>
+    </div>
+  </div>
+
+  <div class="about-block">
+    <h3 class="about-heading">Data Sources</h3>
+    <div class="about-sources">
+      <a class="source-card" href="https://ssd.jpl.nasa.gov/horizons/" target="_blank"><span class="source-icon">🔭</span><div><h4>NASA JPL Horizons</h4><p>Real-time ephemeris data for phase angles, solar elongation, and orbital speeds.</p></div><span class="source-arrow">↗</span></a>
+      <a class="source-card" href="https://corsproxy.io" target="_blank"><span class="source-icon">🔗</span><div><h4>corsproxy.io</h4><p>Open CORS proxy used to relay browser requests to NASA's Horizons API.</p></div><span class="source-arrow">↗</span></a>
+    </div>
+  </div>
+  
+  <div class="about-block" id="contact">
+    <h3 class="about-heading">Contact Us</h3>
+    <p class="about-paragraph">You can contact any of the developers below for inquiries regarding Planet Seeker at:</p>
+    <div class="about-team-grid">
+      <div class="team-card"><div class="team-avatar">AR</div><h4>Angelo Ragucci</h4><span class="team-role"><a href="mailto:angelo.ragucci@cix.csi.cuny.edu">angelo.ragucci@cix.csi.cuny.edu</a></span></div>
+      <div class="team-card"><div class="team-avatar">JR</div><h4>Justin Robles</h4><span class="team-role"><a href="mailto:justin.robles@cix.csi.cuny.edu">justin.robles@cix.csi.cuny.edu</a></span></div>
+      <div class="team-card"><div class="team-avatar">NB</div><h4>Nicholas Barton</h4><span class="team-role"><a href="mailto:nicholas.barton@cix.csi.cuny.edu">nicholas.barton@cix.csi.cuny.edu</a></span></div>
+    </div>
+  </div>
+
+  </section>
+
+  <section id="credits">
+    <div class="section-title-card">
+      <p>Credits</p>
+    </div>
+
+    <div class="credits-wrap">
+      <p class="credits-intro">Planet Seeker uses the following public resources for planetary telemetry, astronomy context, and mission references.</p>
+
+      <div class="credits-grid">
+        <article class="credit-card">
+          <h3>NASA JPL Horizons</h3>
+          <p>Primary ephemeris source for live phase angle, solar elongation, and orbital values displayed by Planet Seeker.</p>
+          <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noopener noreferrer">https://ssd.jpl.nasa.gov/horizons/</a>
+        </article>
+
+        <article class="credit-card">
+          <h3>NASA Solar System Exploration</h3>
+          <p>General reference material used to verify planet and moon context in educational descriptions.</p>
+          <a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener noreferrer">https://solarsystem.nasa.gov/</a>
+        </article>
+
+        <article class="credit-card">
+          <h3>NASA Artemis Program</h3>
+          <p>Reference source for Artemis mission background used in historical fact callouts.</p>
+          <a href="https://www.nasa.gov/humans-in-space/artemis/" target="_blank" rel="noopener noreferrer">https://www.nasa.gov/humans-in-space/artemis/</a>
+        </article>
+
+        <article class="credit-card">
+          <h3>corsproxy.io</h3>
+          <p>Proxy service used to relay browser requests to the Horizons endpoint where needed for CORS compatibility.</p>
+          <a href="https://corsproxy.io/" target="_blank" rel="noopener noreferrer">https://corsproxy.io/</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
  <script src="planets.js"></script>
 </body>
